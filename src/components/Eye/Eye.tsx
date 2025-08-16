@@ -2,9 +2,14 @@ import { useEffect, useRef } from 'react';
 import './Eye.css';
 import { useDebouncedState } from '../../hooks';
 
-export function Eye() {
+type EyeProps = {
+    onPoke: () => void;
+}
+
+export function Eye({onPoke}: EyeProps) {
     const eyeRef = useRef<HTMLDivElement>(null)
-    const [{x,y}, setCoordinates] = useDebouncedState({x: 0, y: 0}, 800);
+    const [{x,y}, setCoordinates] = useDebouncedState({x: 0, y: 0}, 2000);
+    const [poked, setPoked] = useDebouncedState(false, 1000);
 
     useEffect(() => {
         const watchCursor = (event: MouseEvent) => {
@@ -37,7 +42,14 @@ export function Eye() {
         }
     }, []);
 
-    return <div className='eye' ref={eyeRef}>
-        <div className='eye__pupil' style={{translate: `${x}px ${y}px`}}/>
-    </div>;
+    const handlePoke = () => {
+        setPoked(true);
+        onPoke();
+    };
+
+    return (<div className={`eye__wrapper ${poked ? 'eye__wrapper--poked' : ''}`}>
+        <div className='eye' ref={eyeRef} onClick={handlePoke}>
+            <div className='eye__pupil' style={{translate: `${x}px ${y}px`}}/>
+        </div>
+    </div>);
 }

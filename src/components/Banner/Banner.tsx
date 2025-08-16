@@ -1,4 +1,4 @@
-import { Eye } from '..';
+import { Viewer } from '../Viewer';
 import './Banner.css';
 
 export function Banner() {
@@ -18,8 +18,7 @@ export function Banner() {
             )}</div>
         </div>
         <div className='banner__patch'>
-            <Eye/>
-            <Eye/>
+            <Viewer/>
         </div>
     </div>);
 }

@@ -1,3 +1,15 @@
+.eye__wrapper {
+    transition: all ease-in .1s;
+}
+
+.eye__wrapper--poked {
+    scale: 0.25 1;
+
+    .eye__pupil {
+        scale: 4 1;
+    }
+}
+
 .eye {
     height: 32px;
     aspect-ratio: 1;
@@ -8,9 +20,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .eye__pupil {
+    rotate: 45deg;
     width: 65%;
     aspect-ratio: 1;
     border-radius: 50%;
