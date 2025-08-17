@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import { useReducer, type CSSProperties } from 'react';
 import { Eye } from '..';
 import './Viewer.css';
 import { viewerReducer } from './reducer';
@@ -9,7 +9,7 @@ export function Viewer() {
     const handleEyePoked = () => dispatch({type: 'get-angrier', data: undefined})
 
     return <div className='viewer'>
-        <div className='viewer-sight' style={{'--angriness': angriness}}>
+        <div className='viewer-sight' style={{'--angriness': angriness} as CSSProperties}>
             <Eye onPoke={handleEyePoked}/>
             <Eye onPoke={handleEyePoked}/>
         </div>

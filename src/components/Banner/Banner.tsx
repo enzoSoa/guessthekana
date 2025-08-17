@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import { Viewer } from '../Viewer';
 import './Banner.css';
 
@@ -11,7 +12,7 @@ export function Banner() {
                     <span 
                         key={`${index}-${letter}`}
                         className='banner__letter' 
-                        style={{'--number': `${index % bannerText.length}`}}
+                        style={{'--number': `${index % bannerText.length}`} as CSSProperties}
                     >
                         {letter}
                     </span> 
