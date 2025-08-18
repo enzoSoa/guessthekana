@@ -1,17 +1,27 @@
-import { useReducer, type CSSProperties } from 'react';
+import { useContext, useReducer, type CSSProperties } from 'react';
 import { Eye } from '..';
 import './Viewer.css';
 import { viewerReducer } from './reducer';
+import { InvasiveViewersContext } from '../../context';
 
-export function Viewer() {
-    const [{angriness}, dispatch] = useReducer(viewerReducer, {angriness: 0});
+type ViewerProps = {
+    rotated?: number;
+    initialAngriness?: number;
+}
 
-    const handleEyePoked = () => dispatch({type: 'get-angrier', data: undefined})
+export function Viewer({rotated, initialAngriness}: ViewerProps) {
+    const [{angriness}, dispatch] = useReducer(viewerReducer, {angriness: initialAngriness ?? 0});
+    const { addViewer } = useContext(InvasiveViewersContext);
+
+    const handleEyePoked = () => {
+        dispatch({type: 'get-angrier', data: undefined})
+        if ( angriness >= 1 ) addViewer();
+    };
 
     return <div className='viewer'>
         <div className='viewer-sight' style={{'--angriness': angriness} as CSSProperties}>
-            <Eye onPoke={handleEyePoked}/>
-            <Eye onPoke={handleEyePoked}/>
+            <Eye onPoke={handleEyePoked} angriness={angriness} rotated={rotated}/>
+            <Eye onPoke={handleEyePoked} angriness={angriness} rotated={rotated}/>
         </div>
     </div>;
 }
