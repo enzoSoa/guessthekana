@@ -16,6 +16,7 @@ body {
 	--secondary-light: #e19899;
 
 	background: var(--secondary-medium);
+	font-family: sans-serif;
 }
 
 #background {
