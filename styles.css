@@ -52,8 +52,8 @@ body {
 }
 
 .background-pattern__text {
-	flex-shrink: 0;
-	font-size: calc(96.5vw / 14);
+	flex: 0;
+	font-size: 9vw;
 	font-weight: 900;
 	white-space: nowrap;
 	color: var(--secondary-dark);

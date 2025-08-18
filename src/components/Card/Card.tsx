@@ -20,7 +20,7 @@ export function Card({kana, target, onGoodGuess}: CardProps) {
 
 	const handleSubmit = (event: FormEvent) => {
 		event.preventDefault();
-		if(inputValue === target) {
+		if(inputValue.toLowerCase() === target) {
 			setIsGuessed(true);
 			onGoodGuess();
 		}
