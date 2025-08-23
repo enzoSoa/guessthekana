@@ -6,4 +6,5 @@ export * from './CardDealer';
 export * from './CardFront';
 export * from './Eye';
 export * from './InvasiveViewers';
+export * from './ToggleMemoButton';
 export * from './Viewer';

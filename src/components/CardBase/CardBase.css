@@ -62,7 +62,6 @@
 	animation: 120s ease-in-out infinite bg-slide;
 	padding: 8px;
 	transition: transform linear 0.3s 0.3s;
-	filter: drop-shadow(8px 8px var(--secondary-dark));
 
 	&.card-base--hidden {
 		transform: rotateY(90deg);

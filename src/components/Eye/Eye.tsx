@@ -1,17 +1,24 @@
-import { useEffect, useRef, type CSSProperties } from 'react';
+import { useEffect, useMemo, useRef, type CSSProperties } from 'react';
 import './Eye.css';
 import { useDebouncedState } from '../../hooks';
 
 type EyeProps = {
-    angriness: number;
+    angriness?: number;
     rotated?: number;
-    onPoke: () => void;
+    accentColor?: string;
+    backgroundColor?: string;
+    onPoke?: () => void;
 }
 
-export function Eye({angriness, rotated, onPoke}: EyeProps) {
+export function Eye({angriness, rotated, accentColor, backgroundColor, onPoke}: EyeProps) {
     const eyeRef = useRef<HTMLDivElement>(null)
     const [{x,y}, setCoordinates] = useDebouncedState({x: 0, y: 0}, 2000);
     const [poked, setPoked] = useDebouncedState(false, 1000);
+
+    const eyeStyle = useMemo(() => ({
+        '--accent': accentColor ?? 'var(--primary-medium)',
+        '--background': backgroundColor ?? 'var(--primary-light)',
+    }), [accentColor, backgroundColor]);
 
     useEffect(() => {
         const watchCursor = (event: MouseEvent) => {
@@ -46,12 +53,12 @@ export function Eye({angriness, rotated, onPoke}: EyeProps) {
 
     const handlePoke = () => {
         setPoked(true);
-        onPoke();
+        onPoke?.();
     };
 
     return (<div className={`eye__wrapper ${poked ? 'eye__wrapper--poked' : ''}`}>
-        <div className='eye' ref={eyeRef} onClick={handlePoke}>
-            <div className='eye__pupil' style={{ '--angriness': angriness, translate: `${x}px ${y}px`} as CSSProperties}/>
+        <div className='eye' style={eyeStyle as CSSProperties} ref={eyeRef} onClick={handlePoke}>
+            <div className='eye__pupil' style={{ '--angriness': angriness ?? 0, translate: `${x}px ${y}px`} as CSSProperties}/>
         </div>
     </div>);
 }

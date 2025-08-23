@@ -1,0 +1,97 @@
+.toggle-memo-button {
+    font-family: 'AzeretMono';
+    font-weight: 900;
+    font-size: 1em;
+    letter-spacing: 4px;
+    width: 100%;
+    background: var(--primary-medium);
+    border: 5px solid var(--primary-light);
+    box-shadow: 0 0 0 5px var(--primary-medium);
+    color: var(--primary-light);
+    border-radius: 80px;
+    padding: 8px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    transition: scale ease-in-out 0.2s;
+    cursor: pointer;
+
+    &:hover {
+        scale: 1.1;
+    }
+
+    &:active {
+        scale: 0.9;
+    }
+}
+
+.toggle-memo-button__icon {
+    filter: drop-shadow(2px 2px var(--primary-dark));
+    height: 24px;
+    width: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: width 0.2s 0.2s, top 0.2s 0s;
+        border-radius: 5px;
+        rotate: 30deg;
+        height: 5px;
+        width: 35px;
+        transform-origin: center left;
+        background-color: var(--primary-light);
+        z-index: 1;
+    }
+}
+
+.toggle-memo-button--shown .toggle-memo-button__icon::before  {
+    transition: width 0.2s 0s, top 0.2s 0.2s;
+    top: -5px;
+    width: 5px;
+}
+
+.toggle-memo-button__icon-adjustment {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    rotate: 90deg;
+    scale: 0.75;
+    translate: -50% -50%;
+}
+
+.toggle-memo-button__sentence {
+    filter: drop-shadow(2px 2px var(--primary-dark));
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    height: 19px;
+    overflow: hidden;
+}
+
+.toggle-memo-button__word {
+    display: flex;
+}
+
+.toggle-memo-button__switching-letters {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: all ease-in-out 0.2s;
+
+    &:nth-child(2) { transition-delay: 0.05s }
+    &:nth-child(3) { transition-delay: 0.1s }
+    &:nth-child(4) { transition-delay: 0.15s }
+}
+
+.toggle-memo-button--shown .toggle-memo-button__switching-letters  {
+    translate: 0 calc(-100% - 4px);
+}
