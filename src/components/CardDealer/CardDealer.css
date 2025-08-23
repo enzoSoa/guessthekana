@@ -1,5 +1,15 @@
 .card-dealer {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 32px;
+    position: relative;
+}
+
+.card-dealer__wrapper {
 	width: min(100%, 300px);
 	aspect-ratio: 2/3;
-    position: relative;
+	position: relative;
 }

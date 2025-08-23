@@ -3,6 +3,12 @@
 	src: url("AzeretMono-VariableFont_wght.ttf");
 }
 
+@font-face {
+	font-family: "AzeretMono";
+	font-style: italic;
+	src: url("AzeretMono-Italic-VariableFont_wght.ttf");
+}
+
 body {
 	margin: 0;
 	overflow-x: hidden;
@@ -20,7 +26,7 @@ body {
 }
 
 #background {
-	position: absolute;
+	position: fixed;
 	height: 100vh;
 	width: 100vw;
 	top: 0;

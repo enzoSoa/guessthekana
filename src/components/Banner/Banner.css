@@ -42,23 +42,22 @@
     color: var(--primary-medium);
     white-space: nowrap;
     display: flex;
+    font-weight: 900;
+    font-style: italic;
 }
 
 @keyframes letter-jump {
     0% {
         translate: 0 0;
         scale: 1;
-        font-weight: 600;
     }
     25% {
         translate: 0 -4px;
         scale: 1.2;
-        font-weight: 800;
     }
     50% {
         translate: 0 0;
         scale: 1;
-        font-weight: 600;
     }
 }
 

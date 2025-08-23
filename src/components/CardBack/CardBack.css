@@ -1,0 +1,35 @@
+.card-back__line {
+    width: 100%;
+    padding: 16px;
+    border-radius: 50px;
+    border: 4px solid var(--primary-medium);
+    box-shadow: 0 0 0 4px var(--primary-light);
+    background-color: var(--primary-light);
+    position: relative;
+}
+
+.card-back__text {
+    font-size: 1.25rem;
+    font-family: 'AzeretMono';
+    font-weight: 900;
+}
+
+.card-back__kana {
+    font-family: sans-serif;
+}
+
+.card-back__label {
+    position: absolute;
+    bottom: 0;
+    left: 16px;
+    translate: 0 calc(50% + 2px);
+    font-size: 1rem;
+    font-family: 'AzeretMono';
+    color: var(--primary-light);
+    font-weight: 900;
+    letter-spacing: 4px;
+    background: var(--primary-dark);
+    padding: 4px 8px;
+    border-radius: 16px;
+    border: 4px solid var(--primary-light);
+}

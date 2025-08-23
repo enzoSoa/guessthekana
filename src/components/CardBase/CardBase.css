@@ -1,0 +1,75 @@
+@keyframes bg-slide {
+	0% {
+		background-position: -200px 200px;
+	}
+
+	25% {
+		background-position: 200px -150px;
+	}
+
+	50% {
+		background-position: 300px 150px;
+	}
+
+	75% {
+		background-position: 250px -150px;
+	}
+
+	100% {
+		background-position: -200px 200px;
+	}
+}
+
+.card-base {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 8px;
+	background:
+		linear-gradient(
+			to bottom,
+			transparent 2px,
+			var(--dominant) 2px,
+			var(--dominant) 5px,
+			transparent 5px,
+			transparent 17px,
+			var(--dominant) 17px
+		), linear-gradient(
+			to left,
+			transparent 2px,
+			var(--dominant) 2px,
+			var(--dominant) 5px,
+			transparent 5px,
+			transparent 17px,
+			var(--dominant) 17px
+		), linear-gradient(
+			to bottom,
+			var(--contrast) 2px,
+			transparent 2px
+		), linear-gradient(
+			to left,
+			var(--contrast) 2px,
+			transparent 2px
+		), var(--dominant);
+	background-size: 20px 20px;
+	border: 5px solid var(--contrast);
+	box-shadow: 0 0 0 5px var(--dominant);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 32px;
+	align-items: center;
+	animation: 120s ease-in-out infinite bg-slide;
+	padding: 8px;
+	transition: transform linear 0.3s 0.3s;
+	filter: drop-shadow(8px 8px var(--secondary-dark));
+
+	&.card-base--hidden {
+		transform: rotateY(90deg);
+		transition-delay: 0s;
+
+		&.card-base--backface {
+			transform: rotateY(-90deg);
+		}
+	}
+}

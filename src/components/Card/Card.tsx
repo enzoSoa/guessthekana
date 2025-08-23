@@ -1,57 +1,26 @@
-import { useEffect, useRef, useState, type ChangeEventHandler, type FormEvent } from 'react';
-import { HoverEffect } from '..';
+import { useState } from 'react';
+import { CardFront, CardBack } from '..';
 import './Card.css';
 
 type CardProps = {
   kana: string;
   target: string;
+  shownFace: 'front' | 'back';
 	onGoodGuess: () => void;
 }
 
-export function Card({kana, target, onGoodGuess}: CardProps) {
-  const [inputValue, setInputValue] = useState<string>('');
-  const [isGuessed, setIsGuessed] = useState<boolean>(false);
-	const inputRef = useRef<HTMLInputElement>(null)
+export function Card({kana, target, shownFace, onGoodGuess}: CardProps) {
+  const [isGuessed, setIsGuessed] = useState(false)
 
-	useEffect(() => {
-		if(!inputRef.current) return;
-		setTimeout(() => inputRef.current!.focus(), 300);
-	}, [])
-
-	const handleSubmit = (event: FormEvent) => {
-		event.preventDefault();
-		if(inputValue.toLowerCase() === target) {
-			setIsGuessed(true);
-			onGoodGuess();
-		}
-	}
-
-	const handleInputChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-		setInputValue(event.currentTarget.value.trim());
-	}
+  const handleGoodGuess = () => {
+    setIsGuessed(true);
+    onGoodGuess();
+  }
 
   return (
-    <div className={`card ${isGuessed ?'card--completed':''}`}> 
-      <HoverEffect/>
-      <form 
-        className='card__form'
-        onSubmit={handleSubmit}
-      >
-        <span className='card__kana'>
-          {kana}
-        </span>
-        <div className='card__footer'>
-          <input 
-						ref={inputRef}
-            className='card__input'
-            maxLength={3}
-            onChange={handleInputChange}
-          />
-          <span className='card__label'>
-            ROMAJI?
-          </span>
-        </div>
-      </form>
+    <div className={`card ${isGuessed ? 'card--guessed' : ''}`}> 
+      <CardFront kana={kana} target={target} onGoodGuess={handleGoodGuess} isHidden={shownFace === 'back'}/>
+      <CardBack kana={kana} target={target} isHidden={shownFace === 'front'}/>
     </div>
   )
 }
