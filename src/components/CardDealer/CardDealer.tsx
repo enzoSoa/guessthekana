@@ -6,7 +6,7 @@ import { cardDealerReducer } from './reducer';
 
 
 export function CardDealer() {
-    const {romajiToKana, getRandomKana} = useRandomKana();
+    const {getRandomKana} = useRandomKana();
     const [{count, kanasList, shownFace}, dispatch] = useReducer(
         cardDealerReducer, 
         {
@@ -34,7 +34,6 @@ export function CardDealer() {
     return <div className='card-dealer'>
         <div className='card-dealer__wrapper'>
             {kanasList.map(({romaji, alphabet}, index) => {
-                console.log(romajiToKana[romaji][alphabet], romaji, alphabet)
                 return <Card 
                     key={`${count - (kanasList.length - index) + 1}-${romaji}`} 
                     alphabet={alphabet} 

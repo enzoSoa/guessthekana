@@ -1,9 +1,24 @@
+.toggle-memo-button__wrapper {
+    height: 50px;
+    width: 100%;
+
+    @media screen and (max-width: 880px) {
+        width: 50px;
+    }
+
+    @media screen and (max-width: 440px) {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}
+
 .toggle-memo-button {
     font-family: 'AzeretMono';
     font-weight: 900;
     font-size: 1em;
     letter-spacing: 4px;
-    height: 50px;
+    height: 100%;
     width: 100%;
     background: var(--primary-medium);
     border: 5px solid var(--primary-light);
@@ -14,7 +29,7 @@
     justify-content: center;
     align-items: center;
     gap: 16px;
-    transition: all ease-in-out 0.2s;
+    transition: padding ease 0.2s, width ease 0.2s, top linear 0.1s;
     cursor: pointer;
 
     &:hover {
@@ -26,13 +41,12 @@
     }
 
     @media screen and (max-width: 880px) {
-        width: 50px;
-        padding-left: 23px;
+        padding-left: 22px;
     }
 
     @media screen and (max-width: 440px) {
         position: absolute;
-        top: 0;
+        top: calc(0px + var(--offset-y));
         right: 0;
     }
 }
@@ -54,7 +68,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        transition: width 0.2s 0.2s, top 0.2s 0s;
+        transition: width 0.2s 0.4s, scale 0.2s 0s;
         border-radius: 5px;
         rotate: 30deg;
         height: 5px;
@@ -66,9 +80,9 @@
 }
 
 .toggle-memo-button--shown .toggle-memo-button__icon::before  {
-    transition: width 0.2s 0s, top 0.2s 0.2s;
-    top: -5px;
+    transition: width 0.2s 0s, scale 0.2s 0.4s;
     width: 5px;
+    scale: 0;
 }
 
 .toggle-memo-button__icon-adjustment {
