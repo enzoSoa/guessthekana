@@ -1,13 +1,13 @@
-import type { Kana } from "../../hooks";
+import type { KanaSelection } from "../../hooks";
 import type { ReducerHandler } from "../../types";
 
 type CardsDealerReducerState = {
     count: number,
-    kanasList: Kana[],
+    kanasList: KanaSelection[],
     shownFace: 'front' | 'back',
 };
 type CardsDealerReducerEvents = {
-    'add-kana': {newKana: Kana};
+    'add-kana': {newKana: KanaSelection};
     'remove-first-kana': undefined;
     'turn-card': void;
 };

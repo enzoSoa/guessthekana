@@ -1,15 +1,17 @@
 import { useEffect, useRef, useState, type ChangeEventHandler, type FormEvent } from 'react';
 import './CardFront.css';
 import { CardBase } from '..';
+import { useRandomKana, type Alphabet, type Romaji } from '../../hooks';
 
 type CardFrontProps = {
-  kana: string;
-  target: string;
+  alphabet: Alphabet;
+  romaji: Romaji;
   isHidden: boolean;
 	onGoodGuess: () => void;
 }
 
-export function CardFront({kana, target, isHidden, onGoodGuess}: CardFrontProps) {
+export function CardFront({alphabet, romaji, isHidden, onGoodGuess}: CardFrontProps) {
+  const { romajiToKana } = useRandomKana();
   const [inputValue, setInputValue] = useState<string>('');
 	const inputRef = useRef<HTMLInputElement>(null)
 
@@ -20,7 +22,7 @@ export function CardFront({kana, target, isHidden, onGoodGuess}: CardFrontProps)
 
 	const handleSubmit = (event: FormEvent) => {
 		event.preventDefault();
-		if(inputValue.toLowerCase() === target) {
+		if(inputValue.toLowerCase() === romaji) {
 			onGoodGuess();
 		}
 	}
@@ -35,23 +37,24 @@ export function CardFront({kana, target, isHidden, onGoodGuess}: CardFrontProps)
         className='card-front__form'
         onSubmit={handleSubmit}
       >
-        <span className='card-front__kana'>
-          {kana}
+        <span className='card-front__label card-front__label--left'>
+          {alphabet.toUpperCase()}
         </span>
-        <div className='card-front__footer'>
-          <input 
-						ref={inputRef}
-            className='card-front__input'
-            maxLength={3}
-            value={inputValue}
-            onChange={handleInputChange}
-            autoCorrect='off'
-            enterKeyHint='send'
-          />
-          <span className='card-front__label'>
-            ROMAJI?
-          </span>
-        </div>
+        <span className='card-front__kana'>
+          {romajiToKana[romaji][alphabet]}
+        </span>
+        <input 
+          ref={inputRef}
+          className='card-front__input'
+          maxLength={3}
+          value={inputValue}
+          onChange={handleInputChange}
+          autoCorrect='off'
+          enterKeyHint='send'
+        />
+        <span className='card-front__label card-front__label--down'>
+          ROMAJI?
+        </span>
       </form>
     </CardBase>
   )
