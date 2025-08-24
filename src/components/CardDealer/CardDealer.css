@@ -1,8 +1,5 @@
 .card-dealer {
-	width: min(100%, 300px);
-	padding-inline: 16px;
 	display: flex;
-	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	gap: 32px;
@@ -10,7 +7,8 @@
 }
 
 .card-dealer__wrapper {
-	width: 100%;
+	width: calc(100vw - 32px);
+	max-width: 300px;
 	aspect-ratio: 2/3;
 	position: relative;
 }

@@ -3,13 +3,13 @@
     font-weight: 900;
     font-size: 1em;
     letter-spacing: 4px;
+    height: 50px;
     width: 100%;
     background: var(--primary-medium);
     border: 5px solid var(--primary-light);
     box-shadow: 0 0 0 5px var(--primary-medium);
     color: var(--primary-light);
     border-radius: 80px;
-    padding: 8px 16px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,9 +24,18 @@
     &:active {
         scale: 0.9;
     }
+
+    @media screen and (max-width: 880px) {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50px;
+        padding-left: 24px;
+    }
 }
 
 .toggle-memo-button__icon {
+    flex-shrink: 0;
     filter: drop-shadow(2px 2px var(--primary-dark));
     height: 24px;
     width: 32px;

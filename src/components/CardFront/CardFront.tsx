@@ -15,7 +15,7 @@ export function CardFront({kana, target, isHidden, onGoodGuess}: CardFrontProps)
 
 	useEffect(() => {
 		if(!inputRef.current || isHidden) return;
-		setTimeout(() => inputRef.current!.focus(), 300);
+    inputRef.current!.focus({preventScroll: true});
 	}, [isHidden])
 
 	const handleSubmit = (event: FormEvent) => {
@@ -45,6 +45,8 @@ export function CardFront({kana, target, isHidden, onGoodGuess}: CardFrontProps)
             maxLength={3}
             value={inputValue}
             onChange={handleInputChange}
+            autoCorrect='off'
+            enterKeyHint='send'
           />
           <span className='card-front__label'>
             ROMAJI?
