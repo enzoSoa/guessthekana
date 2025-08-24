@@ -28,8 +28,11 @@ jobs:
       - name: Bulding vite
         run: npm run build
 
-      - name: Adding public content
-        run: cp public/* dist/assets
+      - name: Adding configd.png
+        run: cp public/*{png,json,ico} dist/
+      
+      - name: Adding fonts in bundle
+        run: cp public/*.ttf dist/assets/
       
       - name: Create build artifact
         uses: actions/upload-artifact@v4
