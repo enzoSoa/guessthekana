@@ -61,7 +61,7 @@
 	align-items: center;
 	animation: 120s ease-in-out infinite bg-slide;
 	padding: 8px;
-	transition: transform linear 0.3s 0.3s;
+	transition: transform linear 0.1s 0.1s;
 
 	&.card-base--hidden {
 		transform: rotateY(90deg);
