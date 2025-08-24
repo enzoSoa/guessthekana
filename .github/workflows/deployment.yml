@@ -28,8 +28,8 @@ jobs:
       - name: Bulding vite
         run: npm run build
 
-      - name: Adding configd.png
-        run: cp public/*{png,json,ico} dist/
+      - name: Adding site config files
+        run: cp public/*{png,json,ico,js} dist/
       
       - name: Adding fonts in bundle
         run: cp public/*.ttf dist/assets/
