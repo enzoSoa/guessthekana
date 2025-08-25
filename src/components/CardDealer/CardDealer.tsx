@@ -1,5 +1,5 @@
 import { useEffect, useReducer } from 'react'
-import { Card, ToggleMemoButton } from '..'
+import { Actions, Card } from '..'
 import { useRandomKana } from '../../hooks';
 import './CardDealer.css'
 import { cardDealerReducer } from './reducer';
@@ -45,6 +45,6 @@ export function CardDealer() {
             }
             )}
         </div>
-        <ToggleMemoButton onClick={() => dispatch({type: 'turn-card', data: undefined})} isShown={shownFace === 'back'}/>
+        <Actions onMemoClick={() => dispatch({type: 'turn-card', data: undefined})} isMemoShown={shownFace === 'back'}/>
     </div>
 }

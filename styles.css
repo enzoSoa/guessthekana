@@ -42,7 +42,7 @@ body {
 	display: flex;
 	flex-wrap: nowrap;
 	justify-content: center;
-	background: linear-gradient(var(--secondary-medium), transparent 10vh);
+	background: linear-gradient(var(--secondary-medium), transparent min(10vh, 100px));
 
 	:nth-child(2n) {
 		animation-direction: reverse;
